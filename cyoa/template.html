@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>CYOA</title>
+		<style type="text/css" media="screen">
+body {
+	margin: auto;
+	width: 50%;
+	font-family: sans-serif;
+}
+.center-text {
+	text-align: center;
+}
+p {
+	text-align: justify;
+}
+		.options>a {
+		}
+		</style>
+	</head>
+	<body>
+		<h1 class="center-text">{{.Title}}</h1>
+
+		{{range $index, $story := .Story}}
+
+			<p>{{$story}}</p>
+
+		{{ end }}
+
+		{{ if .Options }}
+
+			<div class="options">
+
+				{{ range $index, $option := .Options }}
+					
+					<ul>
+						<li>
+							<a href="/{{$option.Arc}}">{{$option.Text}}</a>
+						</li>
+					</ul>
+				
+				{{ end }}
+
+			</div>
+
+		{{ else }}
+
+			<div class="center-text">
+				<h2>THE END</h2>
+				<a href="/intro">Click here to start a new Adventure.</a>
+			</div>
+
+		{{ end }}
+
+	</body>
+</html>
